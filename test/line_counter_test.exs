@@ -4,7 +4,7 @@ defmodule LineCounterTest do
 
   setup do
     n = 3
-    file = create_file_with_lines(3)
+    file = create_file_with_lines(n)
     %{filename: file}
   end
 
