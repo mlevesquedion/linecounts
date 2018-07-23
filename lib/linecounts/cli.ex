@@ -30,29 +30,12 @@ defmodule Linecounts.CLI do
     path
     |> DirWalker.stream()
     |> Stream.map(&get_ext_and_line_count/1)
-    |> put_into_map
-    |> insert_total_lines
+    |> Linecounts.Collector.collect()
     |> Linecounts.Formatter.format()
     |> IO.puts()
   end
 
-  def put_into_map(results) do
-    Enum.reduce(results, %{}, &update_map/2)
-  end
-
   def get_ext_and_line_count(path) do
     {Path.extname(path), Linecounts.LineCounter.count_lines(path)}
-  end
-
-  def update_map({ext, lines}, map) do
-    Map.update(map, ext, lines, &(&1 + lines))
-  end
-
-  def insert_total_lines(results) do
-    Map.put(results, "total", calculate_total_lines(results))
-  end
-
-  def calculate_total_lines(results) do
-    Enum.reduce(results, 0, fn {_key, lines}, total -> total + lines end)
   end
 end
