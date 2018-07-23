@@ -2,9 +2,9 @@ defmodule FormatterTest do
   use ExUnit.Case
 
   setup do
-    result_set = %{".exs" => 2, ".js" => 8, "total" => 10}
+    result_set = [{".exs", 2}, {".js", 8}, {"total", 10}]
 
-    single = ".exs         | 2                           | 20"
+    single = ".exs         | 10                          | 100"
 
     table = """
     Extension    | Lines                       | % of total
@@ -23,6 +23,6 @@ defmodule FormatterTest do
   end
 
   test "formats a single line", %{results: result_set, single: single} do
-    assert Linecounts.Formatter.format_line(10, {".exs", Map.get(result_set, ".exs")}) == single
+    assert Linecounts.Formatter.format_line(10, {".exs", 10}) == single
   end
 end

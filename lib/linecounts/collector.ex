@@ -1,5 +1,5 @@
 defmodule Linecounts.Collector do
-  def collect(results) do
+  def collect_to_map(results) do
     results
     |> Enum.reduce(%{}, &update_map/2)
     |> insert_total_lines

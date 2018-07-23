@@ -30,7 +30,8 @@ defmodule Linecounts.CLI do
     path
     |> DirWalker.stream()
     |> Stream.map(&get_ext_and_line_count/1)
-    |> Linecounts.Collector.collect()
+    |> Linecounts.Collector.collect_to_map()
+    |> Linecounts.Sorter.to_sorted_list()
     |> Linecounts.Formatter.format()
     |> IO.puts()
   end

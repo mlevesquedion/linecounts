@@ -1,8 +1,10 @@
 defmodule Linecounts.Formatter do
-  def format(result_set = %{"total" => total}) do
+  def format(result_set) do
+    {"total", total} = List.keyfind(result_set, "total", 0)
+
     lines =
       result_set
-      |> Map.delete("total")
+      |> List.keydelete("total", 0)
       |> Enum.map(&format_line(total, &1))
       |> Enum.join("\n")
 

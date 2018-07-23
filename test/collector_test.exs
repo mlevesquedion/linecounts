@@ -13,7 +13,7 @@ defmodule CollectorTest do
     results: results,
     with_total: with_total
   } do
-    assert collect(results) == with_total
+    assert collect_to_map(results) == with_total
   end
 
   test "calculates total lines", %{results: results} do
