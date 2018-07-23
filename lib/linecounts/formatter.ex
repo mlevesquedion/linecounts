@@ -10,21 +10,21 @@ defmodule Linecounts.Formatter do
   end
 
   def format_line(total, {ext, count}) do
-    String.pad_trailing("#{ext}", 9) <>
+    String.pad_trailing("#{ext}", 12) <>
       " | " <> String.pad_trailing("#{count}", 27) <> " | #{round(count / total * 100)}"
   end
 
   defp header() do
     """
-    Extension | Lines                       | % of total
-    ----------+-----------------------------+-----------
+    Extension    | Lines                       | % of total
+    -------------+-----------------------------+-----------
     """
   end
 
   defp footer(lines) do
     """
 
-    ----------+-----------------------------+-----------
+    -------------+-----------------------------+-----------
     Total : #{lines} lines
     """
   end
