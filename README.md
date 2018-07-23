@@ -1,21 +1,15 @@
 # Linecounts
 
-**TODO: Add description**
+Counts the lines by file type given a path.
 
-## Installation
+## Build
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `linecounts` to your list of dependencies in `mix.exs`:
+`mix escript.build`
 
-```elixir
-def deps do
-  [
-    {:linecounts, "~> 0.1.0"}
-  ]
-end
-```
+## Test
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/linecounts](https://hexdocs.pm/linecounts).
+`mix test`
 
+## Usage
+
+`./linecounts <path>`
