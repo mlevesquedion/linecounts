@@ -10,6 +10,6 @@ Counts the lines by file type given a path.
 
 `mix test`
 
-## Usage
+## Use
 
 `./linecounts <path>`
