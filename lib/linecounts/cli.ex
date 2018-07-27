@@ -29,7 +29,8 @@ defmodule Linecounts.CLI do
   def process(path) do
     path
     |> DirWalker.stream()
-    |> Stream.map(&get_ext_and_line_count/1)
+    |> Stream.map(&Task.async(fn -> get_ext_and_line_count(&1) end))
+    |> Stream.map(&Task.await(&1, :infinity))
     |> Linecounts.Collector.collect_to_map()
     |> Linecounts.Sorter.to_sorted_list()
     |> Linecounts.Formatter.format()
